@@ -1,0 +1,9 @@
+.add-todo {
+  margin-top: 10px;
+  display: flex;
+  width: 200px;
+
+  &__button {
+    margin-left: 10px;
+  }
+}
