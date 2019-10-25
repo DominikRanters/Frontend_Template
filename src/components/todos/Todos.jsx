@@ -24,7 +24,10 @@ const Todos = ({ todos, onDelete, onToggleTodo }) => {
         <div className="todos">
             {renderTodosHeadline()}
             {todos.map(todo => (
-                <div className="todo">
+                <div
+                    key={todo.id}
+                    className="todo"
+                >
                     <Checkbox
                         checked={todo.checked}
                         onChange={() => onToggleTodo(todo.id)}
