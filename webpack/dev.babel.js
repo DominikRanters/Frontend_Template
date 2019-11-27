@@ -8,8 +8,8 @@ const ROOT_PATH = path.resolve('./');
 const ssl = {};
 
 try {
-    ssl.cert = fs.readFileSync(path.join('//fs1/', 'ssl', 'tobitag.crt'));
-    ssl.key = fs.readFileSync(path.join('//fs1/', 'ssl', 'tobitag.key'));
+    ssl.cert = fs.readFileSync(path.join(__dirname, 'ssl', 'ssl.crt'));
+    ssl.key = fs.readFileSync(path.join(__dirname, 'ssl', 'ssl.key'));
 } catch (e) {
     // eslint-disable-next-line no-console
     console.log('\n---------------------------\nNo SSL Certificate found.\n---------------------------\n');
