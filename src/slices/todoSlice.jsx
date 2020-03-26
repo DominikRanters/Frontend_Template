@@ -8,7 +8,7 @@ export const fetchNewTodo = (newTodo) => async (dispatch) => {
     dispatch(addTodo(response)); // dispatch action
 };
 
-
+// create Slice
 const slice = createSlice({
     name: 'todos',
     initialState: {
@@ -37,11 +37,11 @@ const slice = createSlice({
     }
 });
 
-// export state
-export const getTodos = (state) => state.TodoReducer;
-
 // export reducer
 export default slice.reducer;
+
+// export state
+export const getTodos = (state) => state.TodoReducer;
 
 // export actions
 export const {
