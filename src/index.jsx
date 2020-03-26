@@ -1,23 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import store from './store';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducer/rootReducer';
 import App from './components/App';
 
 // Get root element
 const rootEl = document.getElementById('app');
-
-const storeMiddleware = [thunk];
-if (__DEV__ || __STAGING__) {
-    storeMiddleware.push(require('redux-logger').default);
-}
-
-const store = createStore(
-    rootReducer,
-    applyMiddleware(...storeMiddleware)
-);
 
 // Render given component into root element
 const render = (Component) => {
