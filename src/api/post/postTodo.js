@@ -1,7 +1,9 @@
-export default (newTodo) => {
-    // eslint-disable-next-line no-param-reassign
+// export Fetch
+export default async (newTodo) => {
+    // FETCH ......
+
     newTodo.id = Math.random();
-    // eslint-disable-next-line no-param-reassign
+
     newTodo.checked = false;
     return newTodo;
 };
