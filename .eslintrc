@@ -7,29 +7,32 @@
   "globals": {
     "chayns": true,
     "__DEV__": true,
-    "__STAGING__": true,
-    "__LIVE__": true
+    "__QA__": true,
+    "__PROD__": true
   },
   "parser": "babel-eslint",
-  "plugins": [
-    "react-hooks"
-  ],
+  "plugins": ["react-hooks"],
+  "ignorePatterns": ["node_modules/", "build/"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
-    "max-len": "off",
-    "linebreak-style": "off",
-    "indent": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
     "strict": 0,
     "comma-dangle": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/jsx-tag-spacing": "off",
-    "react/jsx-indent": "off",
-    "react/jsx-indent-props": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "react/no-danger": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "no-use-before-define": "off",
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-curly-newline": "off",
+    // Suppression of reassign erros for immer.js
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["draft"] }
+    ],
+    "import/prefer-default-export": "off"
   },
-  "extends": "airbnb"
+  "extends": ["airbnb", "prettier"]
 }

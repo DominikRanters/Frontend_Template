@@ -3,7 +3,7 @@ import Input from 'chayns-components/lib/react-chayns-input/component/Input';
 import Button from 'chayns-components/lib/react-chayns-button/component/Button';
 import './addTodo.scss';
 import { useDispatch } from 'react-redux';
-import { fetchNewTodo } from '../../slices/todoSlice';
+import { addTodo } from '../../slices/todo/todoFetches';
 
 const AddTodo = () => {
     // get dispatch
@@ -13,7 +13,7 @@ const AddTodo = () => {
 
     const handleSubmit = () => {
         // dispatch fetch
-        dispatch(fetchNewTodo(newTodo));
+        dispatch(addTodo({newTodo}));
         setNewTodo({ title: '' });
     };
 

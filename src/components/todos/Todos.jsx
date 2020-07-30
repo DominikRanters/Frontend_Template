@@ -4,7 +4,7 @@ import Icon from 'chayns-components/lib/react-chayns-icon/component/Icon';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import './todo.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleTodo, deleteTod, getTodos } from '../../slices/todoSlice';
+import { toggleTodo, deleteTod, getTodos } from '../../slices/todo/todoSlice';
 import AddTodo from '../add-todo/AddTodo';
 
 const Todos = () => {
