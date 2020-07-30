@@ -3,32 +3,32 @@ import Input from 'chayns-components/lib/react-chayns-input/component/Input';
 import Button from 'chayns-components/lib/react-chayns-button/component/Button';
 import './addTodo.scss';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../../slices/todo/todoFetches';
+import { fetchAddTodo } from '../../slices/todo/todoFetches';
 
 const AddTodo = () => {
     // get dispatch
     const dispatch = useDispatch();
 
-    const [newTodo, setNewTodo] = useState({ title: '' });
+    const [newTodoTitle, setNewTodoTitle] = useState('');
 
     const handleSubmit = () => {
         // dispatch fetch
-        dispatch(addTodo({newTodo}));
-        setNewTodo({ title: '' });
+        dispatch(fetchAddTodo(newTodoTitle));
+        setNewTodoTitle('');
     };
 
     return (
         <div className="add-todo">
             <Input
-                value={newTodo.title}
-                onChange={(title) => setNewTodo({ ...newTodo, title })}
+                value={newTodoTitle}
+                onChange={(title) => setNewTodoTitle(title)}
                 placeholder="add todo"
                 onEnter={handleSubmit}
             />
             <Button
                 className="add-todo__button"
                 onClick={handleSubmit}
-                disabled={newTodo.title.length === 0}
+                disabled={newTodoTitle.length === 0}
             >
                 +
             </Button>

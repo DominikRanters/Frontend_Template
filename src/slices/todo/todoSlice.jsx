@@ -1,12 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import postNewTodo from '../api/post/postTodo';
-
-// dispatch zum fetchen
-export const fetchNewTodo = (newTodo) => async (dispatch) => {
-    const response = await postNewTodo(newTodo); // fetch
-
-    dispatch(addTodo(response)); // dispatch action
-};
 
 // create Slice
 const slice = createSlice({
