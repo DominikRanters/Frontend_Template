@@ -1,18 +1,15 @@
 import React from 'react';
-import Checkbox from 'chayns-components/lib/react-chayns-checkbox/component/Checkbox';
-import Icon from 'chayns-components/lib/react-chayns-icon/component/Icon';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import Checkbox from '../extensions/Checkbox'
 import './todo.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleTodo, deleteTod, getTodos } from '../../slices/todo/todoSlice';
-import AddTodo from '../add-todo/AddTodo';
+import { deleteTodo, todoStore } from '../../slices/todo/todoSlice';
 
 const Todos = () => {
     // get dispetch
     const dispatch = useDispatch();
 
     // get props from state
-    const { todos } = useSelector(getTodos);
+    const todos = useSelector(todoStore);
 
     const renderTodosHeadline = () => {
         let checkedTodosCount = 0;
@@ -36,18 +33,15 @@ const Todos = () => {
                     className="todo"
                 >
                     <Checkbox
-                        checked={todo.checked}
-                        onChange={() => dispatch(toggleTodo({ id: todo.id }))} // dispatch action
+                        todo={todo}
                     />
-                    <Icon
+                    <div
                         className="todo__delete-icon"
-                        icon={faTrash}
-                        onClick={() => dispatch(deleteTod({ id: todo.id }))} // dispatch action
-                    />
+                        onClick={() => dispatch(deleteTodo({ id: todo.id }))}
+                    >X</div>
                     <div>{todo.title}</div>
                 </div>
             ))}
-            <AddTodo />
         </div>
     );
 };

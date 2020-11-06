@@ -1,32 +1,14 @@
 const PostCSSPresetEnv = require('postcss-preset-env');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const fs = require('fs');
 const webpack = require('webpack');
 const AppcacheWebpackPlugin = require('appcache-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const {
-    externalName,
-    internalName
-} = require('./project.json');
 
 const PATH_SOURCE = path.join(__dirname, './src');
 const PATH_BUILD = path.join(__dirname, './build');
 const PATH_BUILD_QA = path.join(__dirname, './build');
-
-const ssl = {};
-
-try {
-    ssl.cert = fs.readFileSync(
-        path.join('\\\\fs1.tobit.ag\\ssl', 'tobitag.crt')
-    );
-    ssl.key = fs.readFileSync(
-        path.join('\\\\fs1.tobit.ag\\ssl', 'tobitag.key')
-    );
-} catch (e) {
-    // eslint-disable-next-line no-console
-    console.log('\n-------------\nNo SSL Certificate found.\n-------------\n');
-}
+const externalName = 'Template Hooks & Redux Toolkit';
 
 const devServer = {
     host: '0.0.0.0',
@@ -34,8 +16,6 @@ const devServer = {
     historyApiFallback: true,
     compress: true,
     disableHostCheck: true,
-    cert: ssl.cert,
-    key: ssl.key,
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods':

@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Input from 'chayns-components/lib/react-chayns-input/component/Input';
-import Button from 'chayns-components/lib/react-chayns-button/component/Button';
 import './addTodo.scss';
 import { useDispatch } from 'react-redux';
 import { fetchAddTodo } from '../../slices/todo/todoFetches';
@@ -19,19 +17,23 @@ const AddTodo = () => {
 
     return (
         <div className="add-todo">
-            <Input
+            <input
                 value={newTodoTitle}
-                onChange={(title) => setNewTodoTitle(title)}
+                onChange={(e) => setNewTodoTitle(e.target.value)}
                 placeholder="add todo"
-                onEnter={handleSubmit}
+                onKeyUp={(e) => {
+                    if (e.keyCode === 13) {
+                        handleSubmit();
+                    }
+                }}
             />
-            <Button
+            <button
                 className="add-todo__button"
                 onClick={handleSubmit}
                 disabled={newTodoTitle.length === 0}
             >
                 +
-            </Button>
+            </button>
         </div>
     );
 };

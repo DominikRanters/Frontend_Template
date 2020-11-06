@@ -17,19 +17,12 @@ const render = (Component) => {
     );
 };
 
-/**
- * The init function is used to be sure, that chayns® will be ready until render() is called
- * @return {Promise.<void>}
- */
 async function init() {
     try {
-        // Wait until chayns® is ready
-        await chayns.ready;
-
         // Render App
         render(App);
     } catch (err) {
-        console.warn('no chayns environment found', err);
+        console.warn("can't render App" , err);
     }
 }
 
