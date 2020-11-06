@@ -19,7 +19,7 @@ const Todos = () => {
              ${checkedTodosCount > 0 ? checkedTodosCount : ''}
              ${checkedTodosCount > 0 && todosCount > 0 ? '/' : ''}
              ${todosCount > 0 ? todosCount : ''} ${todosCount === 1 && checkedTodosCount <= 0 ? 'Todo' : 'Todos'}
-             ${checkedTodosCount > 0 ? 'abgeschlossen' : ''}`;
+             ${checkedTodosCount > 0 ? 'completed ' : ''}`;
 
         return <h2>{headlineString}</h2>;
     };
