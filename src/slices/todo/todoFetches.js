@@ -1,19 +1,34 @@
-import { addTodo } from './todoSlice';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchAddTodo = (title) => async (dispatch, getState) => {
-    // Do stuff with state data
-    const { todo } = getState();
+export const fetchAddTodo = createAsyncThunk(
+    'todo/fetchAddTodo',async (arg, { rejectWithValue, getState, signal }) => {
+        // Do stuff with state data
+        const { todos } = getState();
 
-    // FETCH ......
-    const newTodo = {
-        id : Math.random(),
-        checked: false,
-        title,
-    };
+        // fetch abbrechen
+        fetch('example.com', { signal }).then(
+            // do stuff
+        )
 
+        // FETCH ......
+        const newTodo = {
+            id : Math.random(),
+            checked: false,
+            title: arg.title,
+        };
 
-    dispatch(addTodo(newTodo));
+        if (newTodo !== null) {
+            return newTodo;
+        }
 
-    return true;
-}
+        return rejectWithValue();
+    },
+    {
+        condition(arg, { getState }) {
+            return !getState().todos.isLoading
+        }
+    }
+);
 
+// const promis = dispatch(fetchAddTodo(title))
+// promis.abort()

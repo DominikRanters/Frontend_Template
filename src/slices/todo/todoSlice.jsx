@@ -1,28 +1,42 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchAddTodo } from './todoFetches';
 
 // create Slice
 const slice = createSlice({
     name: 'todos',
     initialState: {
         todos: [],
+        isLoading: false,
     },
     reducers: {
+
+    },
+    extraReducers: {
         // action name
-        addTodo: (state, { payload }) => {
+        [fetchAddTodo.pending]: (draft, { payload, meta }) => {
+            // get fetchAddTodo input parameters
+            const parameters = meta.arg;
+
+            draft.isLoading = true;
+        },
+        [fetchAddTodo.fulfilled]: (draft, { payload, meta }) => {
+            // get fetchAddTodo input parameters
+            const parameters = meta.arg;
+
             // change/edit state
-            state.todos.push(payload);
-         },
+            draft.todos.push(payload);
+        },
         // action name
-        toggleTodo: (state, { payload }) => {
+        toggleTodo: (draft, { payload }) => {
             // change/edit state
-            const clickedTodo = state.todos[state.todos.findIndex((todo) => todo.id === payload.id)];
+            const clickedTodo = draft.todos[state.todos.findIndex((todo) => todo.id === payload.id)];
             clickedTodo.checked = !clickedTodo.checked;
         },
         // action name
-        deleteTod: (state, { payload }) => {
+        deleteTod: (draft, { payload }) => {
             // change/edit state
-            state.todos.splice(
-                state.todos.findIndex((todo) => todo.id === payload.id),
+            draft.todos.splice(
+                draft.todos.findIndex((todo) => todo.id === payload.id),
                 1
             );
         }
@@ -31,9 +45,6 @@ const slice = createSlice({
 
 // export reducer
 export default slice.reducer;
-
-// export state
-export const getTodos = (state) => state.TodoReducer;
 
 // export actions
 export const {

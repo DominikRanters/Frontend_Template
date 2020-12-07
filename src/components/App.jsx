@@ -8,8 +8,8 @@ class App extends PureComponent {
     render() {
         return (
             <div className="tapp">
-                <Header/>
-                <Todos/>
+                <Header />
+                <Todos />
             </div>
         );
     }
